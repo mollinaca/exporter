@@ -9,8 +9,6 @@ import (
 	"net/http"
 
 	"github.com/mattn/go-pipeline" // go-pipeline : https://github.com/mattn/go-pipeline
-	"strconv"
-	"strings"
 	"unsafe"
 )
 
@@ -33,10 +31,7 @@ func get443Estab() float64 {
 		// PIPESTATUSの中に一つでも0以外が含まれると err : exit status ${status} になるので注意
 		return float64(0)
 	}
-	f, err := strconv.ParseFloat(strings.TrimRight(*(*string)(unsafe.Pointer(&out)), "\n"), 64)
-	if err != nil {
-		return float64(0)
-	}
+    f := *(*float64)(unsafe.Pointer(&out[0]))
 	return float64(f)
 }
 
