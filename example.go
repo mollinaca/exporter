@@ -31,7 +31,7 @@ func get443Estab() float64 {
 		// PIPESTATUSの中に一つでも0以外が含まれると err : exit status ${status} になるので注意
 		return float64(0)
 	}
-    f := *(*float64)(unsafe.Pointer(&out[0]))
+	f := *(*float64)(unsafe.Pointer(&out[0]))
 	return float64(f)
 }
 
